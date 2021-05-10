@@ -1,10 +1,19 @@
 package com.harden.lol_matching.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.Date;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Table(name = "user")
 @Entity
 public class User {
 
@@ -41,4 +50,27 @@ public class User {
     @Column
     private int recommend; // 추천 수
 
+    @OneToMany(mappedBy = "User")
+    private List<UserToDesiredPosition> userToDesiredPosition = new ArrayList<>();
+
+    @OneToMany(mappedBy = "User")
+    private List<UserToUserPosition> userToUserPosition = new ArrayList<>();
+
+    @OneToMany(mappedBy = "User")
+    private List<UserToMatchingHistory> userToMatchingHistory = new ArrayList<>();
+
+    @Builder
+    public User(String id, String gameId, String profileImage, String sex, int tier, int age, String introduce, Date lastLoginTimeStamp, boolean voice, String fcm, int recommend) {
+        this.id = id;
+        this.gameId = gameId;
+        this.profileImage = profileImage;
+        this.sex = sex;
+        this.tier = tier;
+        this.age = age;
+        this.introduce = introduce;
+        this.lastLoginTimeStamp = lastLoginTimeStamp;
+        this.voice = voice;
+        this.fcm = fcm;
+        this.recommend = recommend;
+    }
 }
