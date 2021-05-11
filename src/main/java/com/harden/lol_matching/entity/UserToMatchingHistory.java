@@ -16,14 +16,15 @@ import java.util.List;
 public class UserToMatchingHistory {
 
     @Id
+    @Column(name = "user_to_matching_history_id")
     private String id;
 
 
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     @ManyToOne
     private User user;
 
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "matching_history_id")
     @ManyToOne
     private MatchingHistory matchingHistory;
 

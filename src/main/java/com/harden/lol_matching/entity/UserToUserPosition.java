@@ -15,13 +15,14 @@ import java.util.List;
 public class UserToUserPosition {
 
     @Id
+    @Column(name = "user_to_user_position_id")
     private String id;
 
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     @ManyToOne
     private User user;
 
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_position_id")
     @ManyToOne
     private UserPosition userPosition;
 

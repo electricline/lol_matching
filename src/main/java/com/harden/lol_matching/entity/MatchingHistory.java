@@ -15,12 +15,13 @@ import java.util.List;
 public class MatchingHistory {
 
     @Id
+    @Column(name = "matching_history_id")
     private String id;
 
-    @Column
+    @Column(name = "matched_id")
     private String matchedId;
 
-    @OneToMany(mappedBy = "MatchingHistory")
+    @OneToMany(mappedBy = "matchingHistory")
     private List<UserToMatchingHistory> userToMatchingHistories = new ArrayList<>();
 
 

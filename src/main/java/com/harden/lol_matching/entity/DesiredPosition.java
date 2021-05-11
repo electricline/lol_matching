@@ -15,12 +15,13 @@ import java.util.List;
 public class DesiredPosition {
 
     @Id
+    @Column(name = "desired_position_id")
     private String id;
 
-    @Column
+    @Column(name = "position")
     private String postion;
 
-    @OneToMany(mappedBy = "DesiredPosition")
+    @OneToMany(mappedBy = "desiredPosition")
     private List<UserToDesiredPosition> userToDesiredPositions = new ArrayList<>();
 
     @Builder

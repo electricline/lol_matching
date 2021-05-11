@@ -13,50 +13,50 @@ import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@Table(name = "user")
 @Entity
 public class User {
 
     @Id
+    @Column(name = "user_id")
     private String id; // 고유 값, 카카오 로그인 토큰 사용
 
-    @Column
+    @Column(name = "game_id")
     private String gameId; // 게임 아이디
 
-    @Column
+    @Column(name ="profile_image")
     private String profileImage; // 프로필 이미지 Url
 
-    @Column
+    @Column(name = "sex")
     private String sex; // 성별
 
-    @Column
+    @Column(name = "tier")
     private int tier; // 티어
 
-    @Column
+    @Column(name = "age")
     private int age; // 나이
 
-    @Column
+    @Column(name = "introduce")
     private String introduce; // 소개글
 
-    @Column
+    @Column(name = "last_login_timestamp")
     private Date lastLoginTimeStamp; // 마지막 접속 시간
 
-    @Column
+    @Column(name = "voice")
     private boolean voice; // 보이스 가능 여부
 
-    @Column
+    @Column(name = "fcm")
     private String fcm; // fcm 토큰
 
-    @Column
+    @Column(name = "recommend")
     private int recommend; // 추천 수
 
-    @OneToMany(mappedBy = "User")
+    @OneToMany(mappedBy = "user")
     private List<UserToDesiredPosition> userToDesiredPosition = new ArrayList<>();
 
-    @OneToMany(mappedBy = "User")
+    @OneToMany(mappedBy = "user")
     private List<UserToUserPosition> userToUserPosition = new ArrayList<>();
 
-    @OneToMany(mappedBy = "User")
+    @OneToMany(mappedBy = "user")
     private List<UserToMatchingHistory> userToMatchingHistory = new ArrayList<>();
 
     @Builder
